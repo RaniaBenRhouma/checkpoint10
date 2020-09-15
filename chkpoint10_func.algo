@@ -1,0 +1,38 @@
+FUNCTION dot_product (vector1,vector2 : ARRAY_OF FLOAT): FLOAT
+VAR
+    i,j: INTEGER ;
+    pdtsc: FLOAT : =0 ;
+BEGIN
+    FOR i FROM 0 TO 2 STEP 1  DO
+    FOR j FROM 0 TO 2 STEP 1  DO
+           IF (i=j) THEN
+            pdtsc:= pdtsc + vector1[i]*vector2[j];
+           END_IF
+    END_FOR
+    END_FOR
+    RETURN pdtsc; 
+END
+
+ALGORITHM chk10_pb2
+VAR
+    vector1,vector2 : ARRAY_OF FLOAT [3];
+    i:INTEGER;
+    ps:FLOAT;
+BEGIN
+    FOR i FROM 0 TO 2 STEP 1  DO
+        read(vector1[i]);
+    END_FOR
+
+    FOR i FROM 0 TO 2 STEP 1  DO
+        read(vector2[i]);
+    END_FOR
+
+    ps:= dot_product(vector1,vector2,ps);
+
+    IF (ps=0) THEN
+        write("the two vectors are orthogonal");
+    ELSE
+        write("the two vectors are not orthogonal");
+    END_IF
+    
+END
